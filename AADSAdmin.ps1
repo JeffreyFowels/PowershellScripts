@@ -11,7 +11,7 @@ Connect-AzureAD -Credential $AzCredentials
 
 # Create the service principal for Azure AD Domain Services.
 
-#New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
 
 # First, retrieve the object ID of the 'AAD DC Administrators' group.
