@@ -1,0 +1,17 @@
+$AzCredentialsAsset = 'AzureCredentials'
+Get-AutomationPSCredential -Name 'AzureCredentials'
+$DdomianJionUPN = Get-AutomationVariable -Name 'adminUsername'
+$securePassword = $AzCredentials.Password
+$password = $AzCredentials.GetNetworkCredential().Password
+
+#Authenticate Azure
+#Get the credential with the above name from the Automation Asset store
+$AzCredentials = Get-AutomationPSCredential -Name $AzCredentialsAsset
+$AzCredentials.password.MakeReadOnly()
+Connect-AzureAD -Credential $AzCredentials
+
+# Now, retrieve the object ID of the user you'd like to add to the group.
+$UserObjectId = Get-AzureADUser -Filter "UserPrincipalName eq '$DdomianJionUPN'"| Select-Object ObjectId
+
+#Reset Password for Hash Sync
+Set-AzureADUserPassword -ObjectId $UserObjectId.objectid  -Password $securePassword 
