@@ -4,7 +4,7 @@ $AzCredentialsAsset = 'AzureCredentials'
 $AzCredentials = Get-AutomationPSCredential -Name $AzCredentialsAsset
 $AzCredentials.password.MakeReadOnly()
 Connect-AzAccount -Credential $AzCredentials
-$usernames2 = Get-AutomationVariable -Name 'AVDUserAccess' 
+$usernames2 = Get-AutomationVariable -Name 'avduseraccesslist' 
 $usernames3 = $usernames2 -split (',')
 $ResourceName = Get-AutomationVariable -Name 'Resource' 
 ##^(?:(?<username>[^@]+)@(?<domain>.+)|(?<domain>[^\\]+)\\(?<username>.+))$
