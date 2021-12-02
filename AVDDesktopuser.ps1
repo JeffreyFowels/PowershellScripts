@@ -11,4 +11,4 @@ $ResourceName = Get-AutomationVariable -Name 'Resource'
 
 
 foreach ($upn in $usernames3) {
-New-AzRoleAssignment -SignInName $upn -RoleDefinitionName "Desktop Virtualization User" -ResourceName $ResourceName -ResourceGroupName RSG-WVD -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' }
+New-AzRoleAssignment -SignInName $upn -RoleDefinitionName "Desktop Virtualization User" -ResourceName $ResourceName -ResourceGroupName cb-zar-qa-avd-rg001 -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' }
